@@ -1,0 +1,105 @@
+@media(min-width: 1200px) {
+  .container {
+    max-width: 1110px;
+  }
+}
+@media(min-width: 992px) and (max-width: 1199px) {
+  .container {
+    max-width: 920px;
+  }
+}
+
+@media(min-width: 768px) and (max-width: 992px) {
+  .container {
+      max-width: 720px;
+  }
+}
+@media(min-width: 580px) and (max-width: 768px) {
+  .container {
+      max-width: 576px;
+  }
+}
+@media(min-width: 375px) and (max-width: 580px) {
+  .container {
+      max-width: 100%;
+  }
+  .logo{
+    max-width: 150px;
+    padding-top: 10px;
+  }
+}
+@media(max-width: 375px) {
+  .container {
+    max-width: 100%;
+  }
+  .logo {
+    max-width: 150px;
+    padding-top: 10px;
+  }
+}
+
+.header {
+  height: 75px;
+  background-color:#fff;
+  box-sizing: inherit;
+  border-bottom: 1px solid #e6e6e6;
+} 
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  height:100%;  
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.logo {
+  width: 200px;
+  padding: 5px 0;
+}
+
+.login {
+  display: flex;
+  align-items: center;
+  color: #455a64;
+}
+.login a {
+  margin-right: 20px;
+  color: #455a64;
+  font-weight: 600;
+  text-decoration: none;
+}
+.loginbutton {
+  display: flex;
+}
+
+.loginbutton span {
+  align-self: center;
+}
+
+.icon {
+  margin-right: 10px;
+  border: 1px solid #455a64;
+  border-radius: 50%;
+  width: 27px;
+  height: 27px;
+  padding: -11px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+.icon svg {
+  stroke: gray; 
+  fill: gray;
+}
+.loginbutton:hover .icon svg {
+  fill: red;
+}
+.loginbutton:hover .icon{
+  border-color: red;
+}
+.loginbutton:hover {
+  color: red;
+  cursor: pointer;
+}
