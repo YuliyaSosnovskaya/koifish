@@ -1,3 +1,5 @@
+import {Link} from 'react-router-dom';
+
 import LoginIcon from '../../img/loginIcon';
 
 import logo from '../../img/logo.png'; 
@@ -7,7 +9,9 @@ const Header = () => {
   return (
     <div className={classes.header}>
       <div className={classes.container}>
-        <img src={logo} className={classes.logo}alt="logo" />
+        <Link to='/catalog'>
+          <img src={logo} className={classes.logo}alt="logo" />
+        </Link>
         <div className={classes.login}>
           <a href="tel:+74951234567">+7 (495) 123-45-67</a>
           <div className={classes.loginbutton}>

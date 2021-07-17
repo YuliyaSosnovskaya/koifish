@@ -17,24 +17,31 @@
 @media(min-width: 580px) and (max-width: 768px) {
   .container {
       max-width: 576px;
+      justify-content: center;
   }
 }
 @media(min-width: 375px) and (max-width: 580px) {
   .container {
       max-width: 100%;
+      padding-right:7px;
   }
   .logo{
-    max-width: 150px;
-    padding-top: 10px;
+    min-width: 150px;
   }
+  .login a {
+    margin-right: 0;
+    font-size: 12px;
+  }
+
 }
 @media(max-width: 375px) {
   .container {
     max-width: 100%;
+    padding-right:7px;
   }
   .logo {
-    max-width: 150px;
-    padding-top: 10px;
+    min-width: 120px;
+  
   }
 }
 
@@ -68,6 +75,7 @@
   color: #455a64;
   font-weight: 600;
   text-decoration: none;
+  
 }
 .loginbutton {
   display: flex;
