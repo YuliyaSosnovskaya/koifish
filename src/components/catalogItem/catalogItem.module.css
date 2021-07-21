@@ -1,32 +1,14 @@
-.catalogItem {
-  /* display: flex;
-  flex-direction: column; */
-  position: relative;
-  background-color: #fff;
-  border-radius: 12px;
-  margin-top: 20px;
-  padding: 10px;
-  box-shadow: 0 0 7px #515c621a;
-
-}
-.catalogItem:hover{
-  box-shadow: 0 0 15px #515c624d;;
-}
 img {
   width: 100%;
-  
-
 }
 .title {
   position: absolute;
   bottom: 25px;
   left: 25px;
   font-size: 16px;
-  /* width: fit-content; */
   background-color: #f9f9f9;
-  border-radius: 15px;
-  padding: 8px 12px;
+  border-radius: 12px;
+  padding: 6px 12px 10px 12px;
   color: #455a64;
   font-weight: 600;
-
 }
