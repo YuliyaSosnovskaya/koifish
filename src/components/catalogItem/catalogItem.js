@@ -1,15 +1,19 @@
+import {Link} from 'react-router-dom';
 import classes from './catalogItem.module.css';
-import susiImg from '../../img/mainsusi2.jpg';
 import Card from '../../shared/card/card';
 
-const CatalogItem = () => {
+
+const CatalogItem = (props) => {
   return (
-    <Card>
-      <img src={susiImg} alt='susi' /> 
-      <div className={classes.title}>
-        Суши
-      </div>
-    </Card>
+    <Link to={props.to} >
+      <Card>
+        <img src={props.img} alt='susi' /> 
+        <div className={classes.title}>
+          {props.title}
+        </div>
+      </Card>
+    </Link>
+   
   )
 }
 
