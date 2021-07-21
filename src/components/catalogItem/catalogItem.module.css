@@ -1,0 +1,14 @@
+img {
+  width: 100%;
+}
+.title {
+  position: absolute;
+  bottom: 25px;
+  left: 25px;
+  font-size: 16px;
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  padding: 6px 12px 10px 12px;
+  color: #455a64;
+  font-weight: 600;
+}

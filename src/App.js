@@ -1,4 +1,4 @@
-import {Route, Switch, Redirect, withRouter} from 'react-router-dom'
+import {Route, Switch, Redirect} from 'react-router-dom'
 
 import Rolls from './components/rolls/rolls';
 import Layout from './components/layout/layout';
