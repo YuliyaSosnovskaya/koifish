@@ -1,10 +1,23 @@
-import CatalogItem from "../catalogItem/catalogItem"
+
+import CatalogItem from "../catalogItem/catalogItem";
+import { MENU_LINKS } from '../../metadata';
+
+import classes from './mainPage.module.css';
 
 const MainPage = () => {
-  return(
+  return (
     <>
-      <span>MAIN PAGE</span>
-      <CatalogItem/>
+      {
+        MENU_LINKS.map((item) => (
+          <div className={classes.container} key={item.title}>
+            <CatalogItem 
+              title={item.title}
+              img={item.img}
+              to={item.to}
+            />
+          </div>
+        ))
+      }
     </>
   );
 };
