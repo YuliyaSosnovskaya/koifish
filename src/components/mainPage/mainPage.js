@@ -1,12 +1,14 @@
 
 import CatalogItem from "../catalogItem/catalogItem";
 import { MENU_LINKS } from '../../metadata';
+import Carusel from '../../shared/carusel/carusel';
 
 import classes from './mainPage.module.css';
 
 const MainPage = () => {
   return (
     <>
+    <Carusel/>
       {
         MENU_LINKS.map((item) => (
           <div className={classes.container} key={item.title}>
