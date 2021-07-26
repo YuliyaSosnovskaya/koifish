@@ -8,7 +8,9 @@ import classes from './mainPage.module.css';
 const MainPage = () => {
   return (
     <>
-    <Carusel/>
+    <div className={classes.carusel}>
+      <Carusel/>
+    </div>
       {
         MENU_LINKS.map((item) => (
           <div className={classes.container} key={item.title}>

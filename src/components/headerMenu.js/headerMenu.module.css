@@ -13,6 +13,7 @@
   align-items: center;
   justify-content: space-between;
   height: 100%;  
+  width: 85%;
   margin-right: auto;
   margin-left: auto;
 }
@@ -32,7 +33,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 15px;
 }
 
 .linksContainer a {
@@ -55,34 +55,13 @@
   color: red !important;
   border-bottom: none !important;
 }
-@media(min-width: 1200px) {
-  .container {
-    max-width: 1110px;
-  }
-  
-}
-@media(min-width: 992px) and (max-width: 1199px) {
-  .container {
-    max-width: 920px;
-  }
-  
-}
 
 @media(min-width: 768px) and (max-width: 992px) {
   .container {
-    max-width: 720px;
     font-size: 14px;
   }
- 
-
-   
 }
 @media(min-width: 580px) and (max-width: 768px) {
-  .container {
-    max-width: 576px;
-   
-    
-  }
   .linksContainer a {
     margin-right: 15px;
     font-size: 14px;
@@ -90,10 +69,6 @@
  
 }
 @media(min-width: 375px) and (max-width: 580px) {
-  .container {
-    max-width: 100%;
-    padding-right: 10px;
-  }
   .linksContainer {
     flex-wrap: wrap;
     justify-content: normal;
@@ -106,10 +81,6 @@
   }
 }
 @media(max-width: 375px) {
-  .container {
-    max-width: 100%;
-    padding-right: 10px;
-  }
   .linksContainer {
     flex-wrap: wrap;
     justify-content: normal;
@@ -120,6 +91,5 @@
     font-size: 14px;
 
   }
-
 }
 
