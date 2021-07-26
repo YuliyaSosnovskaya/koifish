@@ -3,8 +3,10 @@
   background-color: #fff;
   border-radius: 10px;
   margin-top: 20px;
-  padding: 10px;
+  overflow: hidden;
   box-shadow: 0 0 7px #515c621a;
+  height: fit-content;
+  
 }
 .card:hover {
   box-shadow: 0 0 15px #515c624d;

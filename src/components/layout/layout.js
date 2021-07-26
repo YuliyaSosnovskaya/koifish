@@ -8,8 +8,14 @@ const Layout = (props) => {
     <div className={classes.Layout}>
       <Header />
       <HeaderMenu/>
-      <div className={classes.content}>
-        {props.children}
+      <div style={{
+        backgroundColor: '#f9f9f9',
+        flexGrow: 1,
+        display: 'flex'
+      }}>
+        <div className={classes.content}>
+          {props.children}
+        </div>
       </div>
     </div>
   );

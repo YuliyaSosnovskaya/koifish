@@ -1,5 +1,5 @@
 .container {
-  width: 100%;
+  max-width: 1098px;
   display: flex;
   overflow: hidden;
   border-radius: 10px;
@@ -23,7 +23,7 @@
   transform: translateX(-200%);
 }
 
-button {
+.button {
   transition: 0.4s;
   position: absolute;
   top: 40%;
@@ -34,11 +34,11 @@ button {
   background-color: #131212bd;
   padding: 10px;
 }
-button:hover {
+.button:hover {
   background-color: #131212ed;
   cursor: pointer;
 }
-button:disabled{
+.button:disabled{
   background-color: #9e9e9e87;
   cursor: default;
 }

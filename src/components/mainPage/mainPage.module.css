@@ -1,37 +1,31 @@
 .container {
-  max-width: 30%;
-  margin-right: 20px;
+  max-width: 33%;
 }
 
-@media(min-width: 1200px) {
+@media(min-width: 1300px) {
   .container {
-    max-width: 30%;
+    max-width: 33%;
   }
 }
-@media(min-width: 992px) and (max-width: 1199px) {
+@media(min-width: 992px) and (max-width: 1299px) {
   .container {
-    max-width: 45%;
+    max-width: 47%;
   }
 }
 
-@media(min-width: 768px) and (max-width: 992px) {
+@media(min-width: 568px) and (max-width: 992px) {
   .container {
-      max-width: 70%;
+      max-width: 47%;
   }
 }
-@media(min-width: 580px) and (max-width: 768px) {
-  .container {
-      max-width: 80%;
-  }
-}
-@media(min-width: 375px) and (max-width: 580px) {
+@media(min-width: 375px) and (max-width: 568px) {
   .container {
       max-width: 100%;
   }
 }
-@media(max-width: 375px) {
-  .container {
-    max-width: 100%;
-  }
- 
+
+.carusel {
+  width: 100%;
+  justify-content: center;
+  display: flex;
 }
