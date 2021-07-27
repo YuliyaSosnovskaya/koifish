@@ -2,7 +2,7 @@ import Card from "../../shared/card/card";
 
 import classes from './menuItem.module.css';
 
-const MenuItem = ({title, img, description, price}) => {
+const MenuItem = ({title, img, description, price, onAdd}) => {
   return (
     <Card>
       <div className={classes.menuItem}>
@@ -15,7 +15,7 @@ const MenuItem = ({title, img, description, price}) => {
           
           <div>
             <span className={classes.price}>{price} руб</span>
-            <button className={classes.button}>В корзину</button>
+            <button className={classes.button} onClick={onAdd}>В корзину</button>
           </div>
         </div>
       </div>
