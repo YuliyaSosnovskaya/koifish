@@ -21,7 +21,7 @@ const Rolls = () => {
             id: key,
             description: data[key].description,
             img: data[key].img,
-            price:data[key].price,
+            price: data[key].price,
             title: data[key].title
           }
         })
@@ -36,11 +36,12 @@ const Rolls = () => {
         items.map((item) => (
           <MenuItem 
             key={item.title}
+            // {...item} тоже самое что и все объекты чтобы не раскрывать каждый отдельно 
             title={item.title}
             img={item.img}
             description={item.description}
             price={item.price}
-            onAdd={() => { console.log(item); }}
+            id={item.id}
           />
         ))
       }
