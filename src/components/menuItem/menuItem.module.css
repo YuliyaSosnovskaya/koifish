@@ -3,6 +3,7 @@
   flex-direction: column;
   height: 450px;
   transition: 0.5s;
+  position: relative;
 }
 
 .menuItem:hover .button {
@@ -11,17 +12,26 @@
   color: white;
 }
 
-.bottomDetails {
+.details {
   display: flex;
   flex-direction: column;
-  padding: 0 25px;
   height: 100%;
   justify-content: space-between;
 }
+
+.padding {
+  display: flex;
+  flex-direction: column;
+  padding: 0px 25px;
+}
+
+
 .descdiv {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
 }
 .textContainer {
   margin-top: 10px;
@@ -44,6 +54,9 @@
   line-height: 2;
   margin-top: 20px;
 }
+.divForButtons {
+  display: flex;
+}
 .button {
   width: 100%;
   border-radius: 12px;
@@ -53,48 +66,115 @@
   color: #999999;
   cursor: pointer;
   margin-bottom: 20px;
-  transition: 0.3s;
+  
 }
 .button:hover {
   filter: contrast(1.4);
 }
 
+.chooseBlock {
+  display: flex;
+  flex-direction: column;
+  color: #3f484d;
+  font-size: 14px;
+  padding: 0 25px;
+  position: absolute;
+  transform: translateX(+200%);
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
+.back {
+  background: url(https://koifish.by/bitrix/templates/bd_deliverysushi/images/arrow-back.png) no-repeat;
+  width: 45px;
+  height: 9px;
+  margin: 12px 10px;
+  cursor: pointer;
+}
+.backvisible {
+  display: block;
+  
+}
+.hideImg {
+  animation-name: hideImgAnimation;
+}
+.showImg {
+  animation-name: showImgAnimation;
+}
+
+.hideChoice {
+  animation-name: hideChoiceAnimation;
+}
+.showChoice {
+  animation-name: showChoiceAnimation;
+}
+
+@keyframes hideImgAnimation {
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes showImgAnimation {  
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes showChoiceAnimation {
+  100% {
+    transform: translateX(0%);
+  } 
+}
+@keyframes hideChoiceAnimation {
+  0% {
+    transform: translateX(0%); 
+  }
+  100% {
+    transform: translateX(+200%);
+  }
+}
+
+
+
 @media(min-width: 1200px) {
   .menuItem {
-    max-width: 260px;
+    width: 260px;
   }
 }
 @media(min-width:1095px) and (max-width: 1280px) {
   .menuItem {
-    max-width: 300px;
+    width: 300px;
   }
 }
 
 @media(min-width: 952px) and (max-width: 1095px) {
   .menuItem {
-      max-width: 260px;
+      width: 260px;
   }
 }
 @media(min-width: 835px) and (max-width: 952px) {
   .menuItem{
-      max-width: 345px;
+      width: 345px;
   }
 }
 @media(min-width: 790px) and (max-width: 835px) {
   .menuItem{
-      max-width: 325px;
+      width: 325px;
   }
 }
 @media(min-width: 706px) and (max-width: 790px) {
   .menuItem {
-    max-width: 290px;
+    width: 290px;
   }
  
 } 
 @media(min-width: 640px) and (max-width: 706px) {
   .menuItem {
     height: fit-content;
-    max-width: 260px;
+    width: 260px;
   }
  
 } 
