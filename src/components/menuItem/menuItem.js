@@ -1,12 +1,14 @@
 import {useState} from 'react';
+import {connect} from 'react-redux';
 
 import Card from "../../shared/card/card";
+import { addToBasket } from '../../store/actions';
 
 import classes from './menuItem.module.css';
 
 const ADDITIONAL_COST = 4.2;
 
-const MenuItem = ({title, img, description, price, id}) => { 
+const MenuItem = ({title, img, description, price, id, onAddToBasket}) => { 
   const [isImg, setIsImg] = useState(true);
   const [currentPrice, setCurrentPrice] = useState(price);
   const [amount, setAmount] = useState('8');
@@ -22,12 +24,12 @@ const MenuItem = ({title, img, description, price, id}) => {
   const changeAmountHandler = (event) => {
     const amountValue = event.target.value;
     setAmount(amountValue);
-    const newPrice = amountValue == 8 ? price : price + ADDITIONAL_COST;
+    const newPrice = amountValue === '8' ? price : price + ADDITIONAL_COST;
     setCurrentPrice(newPrice);
   }
 
-  const addToCart = () => {
-    console.log({id, currentPrice, amount});
+  const addToBasketHandler = () => {
+    onAddToBasket({id, currentPrice, amount});
   }
  
   const forImg = isImg ? classes.showImg : classes.hideImg;
@@ -77,7 +79,7 @@ const MenuItem = ({title, img, description, price, id}) => {
             <div className={classes.divForButtons} >
               {!isImg && <div className={classes.back} onClick={changeDisplay}></div>}
               {isImg && <button className={classes.button} onClick={changeDisplay}>Свойства</button>}
-              {!isImg && <button className={classes.button} onClick={addToCart}>В корзину</button>}
+              {!isImg && <button className={classes.button} onClick={addToBasketHandler}>В корзину</button>}
             </div>
            
           </div>
@@ -87,4 +89,10 @@ const MenuItem = ({title, img, description, price, id}) => {
   );
 }
 
-export default MenuItem;
+function mapDispatchToProps(dispatch) {
+  return {
+    onAddToBasket : (orderItem) => dispatch(addToBasket(orderItem))
+  }
+}
+
+export default connect(null, mapDispatchToProps)(MenuItem);

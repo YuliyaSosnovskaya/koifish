@@ -1,6 +1,7 @@
 
 .headerMenu {
   padding: 8px 0;
+  min-height: 42px;
   background-color:#fff;
   box-sizing: inherit;
   border-bottom: 1px solid #e6e6e6;
