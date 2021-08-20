@@ -1,0 +1,33 @@
+.basketIcon {
+  fill:gray;
+  min-width: 40px;
+  min-height: 40px;
+  border: 1px solid #455a64;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.1s;
+}
+
+.basketComponent {
+  fill:white;
+  color: white;
+  padding: 0px 15px;
+  border-radius: 17px;
+  border: 1px solid #ff4157;
+  background-color: #ff4157;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.1s;
+}
+
+.basketComponent span {
+  padding-left: 15px;
+}
+.basketComponent svg {
+  width: 35px;
+  height: 33px;
+}
+

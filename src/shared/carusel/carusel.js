@@ -40,11 +40,28 @@ const Carusel = () => {
       <div className={classes.container}>
         {CAROUSEL_IMAGE_PATHS.map((path) => {
           return (
-            <img key={path} className={imgClasses.join(' ')} src={path} />
+            <img
+              alt="carousel img"
+              key={path}
+              className={imgClasses.join(' ')}
+              src={path}
+            />
           );
         })}
-        <button className={[classes.button, classes.leftButton].join(' ')} onClick={swipeLeft} disabled={currentIndex === 0}><img src="left-arrow.svg" /></button>
-        <button className={[classes.button, classes.rightButton].join(' ')} onClick={swipeRight} disabled={currentIndex === 2}><img src="right-arrow.svg" /></button>
+        <button
+          className={[classes.button, classes.leftButton].join(' ')}
+          onClick={swipeLeft}
+          disabled={currentIndex === 0}
+        >
+          <img alt="left arrow" src="left-arrow.svg" />
+        </button>
+        <button
+          className={[classes.button, classes.rightButton].join(' ')}
+          onClick={swipeRight}
+          disabled={currentIndex === 2}
+        >
+          <img alt="right arrow" src="right-arrow.svg" />
+        </button>
 
       </div>
       
