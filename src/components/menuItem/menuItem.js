@@ -29,7 +29,7 @@ const MenuItem = ({title, img, description, price, id, onAddToBasket}) => {
   }
 
   const addToBasketHandler = () => {
-    onAddToBasket({id, currentPrice, amount});
+    onAddToBasket({id, currentPrice, amount,title,img});
   }
  
   const forImg = isImg ? classes.showImg : classes.hideImg;

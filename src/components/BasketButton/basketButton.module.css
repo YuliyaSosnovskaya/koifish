@@ -10,6 +10,7 @@
   transition: 0.1s;
 }
 
+
 .basketComponent {
   fill:white;
   color: white;
@@ -21,6 +22,10 @@
   align-items: center;
   justify-content: center;
   transition: 0.1s;
+}
+.basketComponent:hover {
+  cursor: pointer;
+  filter: contrast(1.2);
 }
 
 .basketComponent span {
