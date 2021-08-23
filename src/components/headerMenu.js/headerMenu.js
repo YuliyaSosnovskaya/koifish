@@ -1,11 +1,19 @@
+import { useState } from 'react';
 import {NavLink} from 'react-router-dom';
 
-import Basket from '../Basket/basket';
+import BasketButton from '../BasketButton/basketButton';
 import { MENU_LINKS } from '../../metadata';
 
 import classes from './headerMenu.module.css';
+import BasketModal from '../BasketModal/BasketModal';
 
 const HeaderMenu = () => {
+  const [isBasketShown, setIsBasketShown] = useState(false);
+
+  const changeBasketVisible = () => {
+    setIsBasketShown((state) => !state);
+  }
+
   return (
     <div className={classes.headerMenu}>
       <div className={classes.container}>
@@ -23,7 +31,8 @@ const HeaderMenu = () => {
             ))
           }          
         </div>
-        <Basket />
+        <BasketButton onButtonClick={changeBasketVisible} />
+        { isBasketShown ? <BasketModal/> : null}
       </div>
     </div>
   );

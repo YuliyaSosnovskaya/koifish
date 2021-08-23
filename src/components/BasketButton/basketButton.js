@@ -2,9 +2,9 @@ import {connect} from 'react-redux';
 
 import BasketIcon from '../../img/basketIcon';
 
-import classes from './basket.module.css';
+import classes from './basketButton.module.css';
 
-const Basket = ({basketArr}) => {
+const basketButton = ({basketArr, onButtonClick}) => {
   if (basketArr.length === 0) {
     return (
       <div className={classes.basketIcon}>
@@ -19,7 +19,7 @@ const Basket = ({basketArr}) => {
   }, 0);
 
   return (
-    <div className={classes.basketComponent}>
+    <div className={classes.basketComponent} onClick={onButtonClick}>
       <BasketIcon/>
       <span>{totalPrice.toFixed(1) + ' руб'}</span>
     </div>
@@ -32,9 +32,4 @@ function mapStateToProps (state) {
   }
 }
 
-// TODO: will be implemented in the near fufture
-function mapDispatchToProps(dispatch) {
-  return {};
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Basket);
+export default connect(mapStateToProps, null)(basketButton);
