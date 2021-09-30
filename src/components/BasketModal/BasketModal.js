@@ -44,7 +44,7 @@ const BasketModal = ({basketArr}) => {
       
       </div>
       <div className={classes.basketDetails}>
-        <span>{`Итого : ${totalPrice} руб`}</span>
+        <span>{`Итого : ${totalPrice.toFixed(1)} руб`}</span>
         <button className={classes.orderButton}>Оформить заказ</button>
       </div>
     </div>
