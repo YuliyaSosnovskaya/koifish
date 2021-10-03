@@ -7,7 +7,7 @@ const CatalogItem = (props) => {
   return (
     <Link to={props.to} >
       <Card>
-        <img classNAMe={classes.img} src={props.img} alt='susi' /> 
+        <img className={classes.img} src={props.img} alt='susi' /> 
         <div className={classes.title}>
           {props.title}
         </div>

@@ -35,7 +35,7 @@ const Rolls = () => {
       {
         items.map((item) => (
           <MenuItem 
-            key={item.title}
+            key={item.id}
             // {...item} тоже самое что и все объекты чтобы не раскрывать каждый отдельно 
             title={item.title}
             img={item.img}

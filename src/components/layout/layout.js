@@ -1,5 +1,5 @@
 import Header from '../header/header';
-import HeaderMenu from '../headerMenu.js/headerMenu';
+import HeaderMenu from '../headerMenu/headerMenu';
 
 import classes from './layout.module.css';
 
