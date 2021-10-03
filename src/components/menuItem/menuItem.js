@@ -8,7 +8,7 @@ import classes from './menuItem.module.css';
 
 const ADDITIONAL_COST = 4.2;
 
-const MenuItem = ({title, img, description, price, id, onAddToBasket}) => { 
+const MenuItem = ({title, img, description, price, id, saveItemToStore}) => { 
   const [isImg, setIsImg] = useState(true);
   const [currentPrice, setCurrentPrice] = useState(price);
   const [amount, setAmount] = useState('8');
@@ -29,7 +29,7 @@ const MenuItem = ({title, img, description, price, id, onAddToBasket}) => {
   }
 
   const addToBasketHandler = () => {
-    onAddToBasket({id, currentPrice, amount,title,img});
+    saveItemToStore({id, currentPrice, amount, title, img});
   }
  
   const forImg = isImg ? classes.showImg : classes.hideImg;
@@ -91,8 +91,13 @@ const MenuItem = ({title, img, description, price, id, onAddToBasket}) => {
 
 function mapDispatchToProps(dispatch) {
   return {
-    onAddToBasket : (orderItem) => dispatch(addToBasket(orderItem))
+    saveItemToStore : (orderItem) => dispatch(addToBasket(orderItem))
   }
 }
 
 export default connect(null, mapDispatchToProps)(MenuItem);
+
+
+
+
+

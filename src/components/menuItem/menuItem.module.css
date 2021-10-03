@@ -30,7 +30,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  animation-duration: 1s;
+  animation-duration: 0.5s;
   animation-fill-mode: forwards;
 }
 .textContainer {
@@ -80,7 +80,7 @@
   padding: 0 25px;
   position: absolute;
   transform: translateX(+200%);
-  animation-duration: 1s;
+  animation-duration: 0.5s;
   animation-fill-mode: forwards;
 }
 .back {
@@ -141,7 +141,7 @@
 
 @media(min-width: 1200px) {
   .menuItem {
-    width: 260px;
+    width: 255px;
   }
 }
 @media(min-width:1095px) and (max-width: 1280px) {
@@ -181,7 +181,7 @@
 @media (max-width: 640px) {
   .menuItem {
     height: fit-content;
-    max-width: 420px;
+    max-width: 405px;
   }
  
 } 
