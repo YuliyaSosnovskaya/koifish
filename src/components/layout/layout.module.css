@@ -3,7 +3,7 @@
   flex-direction: column;
   height: 100vh;
 }
-span{
+.span{
   width: 100%;
 }
 .content {

@@ -1,0 +1,11 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+.label{
+  color:  #808080;
+  line-height: 1.8;
+  font-size: 15px;
+  padding-left: 5px;
+}
