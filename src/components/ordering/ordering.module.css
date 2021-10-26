@@ -1,0 +1,104 @@
+.header {
+  color: #373a3c;
+  font-size: 30px;
+  margin: 20px 0;
+}
+.wrapper {
+  display: flex;
+}
+.leftOrderDetails{
+  max-width: 60%;
+}
+.rightOrderDetails{
+  margin-left: 50px;
+  min-width: 35%;
+  background-color: red;
+}
+.deliveryBlock {
+  display: flex;
+  height: 75px;
+}
+.closestDeliveryCheckbox {
+  margin-left: 10px;
+  display: flex;
+  padding-top: 15px;
+  align-items: center;
+}
+.adresBlock {
+  padding: 15px 30px 10px 15px;  
+  background: #fff;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  box-shadow: 0 0 15px rgb(81 92 98 / 10%);
+  position: relative;
+  margin-top: 55px; 
+}
+.adresssHeader{
+  position: absolute;
+  padding: 5px 12px;
+  height: 50px;
+  text-align: center;
+  background: #fff;
+  border-radius: 8px;
+  color: #292f3abf;
+  font-size: 18px;
+  line-height: 1.5;
+  box-shadow: none;
+  top: -40px;
+  left: 0;
+}
+.adreswrapper {
+  display: flex;
+}
+.adreswrapper input {
+  margin-right: 20px;
+  width: 90px;
+}
+.uncontactWrapper {
+  width: 92%;
+  border-radius: 12px;
+  padding: 30px 20px 30px 32px;
+  margin-top: 40px;
+  background-color: #f6f6dc;
+}
+.unContactDelivery span{
+  font-weight: 500;
+  font-size: 16px;
+  left: 35px;
+  top: -2px;
+  color: #575740;
+}
+.description {
+  padding-top: 15px;
+  color: #575740;
+}
+.uncontactDelivery {
+  display: flex;
+}
+.totalPriceTitle{
+  margin-top: 50px;
+  color: #3f4245;
+  font-weight: 600;
+  font-size: 18px;
+}
+/*КНОПКА ОФОРМИТЬ ЗАКАЗ*/
+.orderButton {
+  text-align: center;
+  border-radius: 12px;
+  height: 35px;
+  width: 100%;
+  background-color: #f8515c;
+  border: solid 1px #f8515c;
+  font-size: 14px;
+  font-stretch: condensed;
+  color: #f5f3f3;
+  margin:  25px 0;
+}
+.orderButton:hover {
+  cursor: pointer;
+  filter: contrast(1.4);
+  color: #fffdfd;
+}
+
+
+

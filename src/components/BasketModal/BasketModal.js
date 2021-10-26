@@ -1,5 +1,6 @@
 import {useEffect} from 'react';
 import { connect } from "react-redux";
+import { NavLink } from 'react-router-dom';
 import {deleteFromBasket} from '../../store/actions/index';
 
 import classes from './BasketModal.module.css';
@@ -10,19 +11,6 @@ const BasketModal = ({basketArr, closeBasket, deleteItemFromStore}) => {
     return acc + price;
   }, 0);
 
-  console.log(basketArr);
-  // const orderList =basketArr.map((item) => {
-  //   <div className={classes.orderItem}>
-  //     <div className={classes.img}><img src={item.img}/>
-  //     </div>
-  //     <div>{item.title}</div>
-  //     <div className={classes.amount}>{`${item.amount} шт`}</div>
-  //     <div> {item.currentPrice}</div>
-
-  //   </div>
-  // }) ;
-
-  // close basket if user clicked outside 
   const onClickDocumentHandler = (event) => {
     let target = event.target;
     let isClickOutside = true;
@@ -39,7 +27,6 @@ const BasketModal = ({basketArr, closeBasket, deleteItemFromStore}) => {
     }
   }
   const deleteFromBasketHandler = (id) => {
-    debugger;
     deleteItemFromStore(id);
   }
 
@@ -75,7 +62,9 @@ const BasketModal = ({basketArr, closeBasket, deleteItemFromStore}) => {
       </div>
       <div className={classes.basketDetails}>
         <span>{`Итого : ${totalPrice.toFixed(1)} руб`}</span>
-        <button className={classes.orderButton}>Оформить заказ</button>
+        <NavLink exact to='/ordering'>
+          <button className={classes.orderButton}>Оформить заказ</button>
+        </NavLink>
       </div>
     </div>
   )
