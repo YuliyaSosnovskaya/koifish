@@ -11,6 +11,7 @@ const HeaderMenu = () => {
   const [isBasketShown, setIsBasketShown] = useState(false);
 
   const openBasketHandler = () => {
+    debugger;
     setIsBasketShown(true);
   }
 
