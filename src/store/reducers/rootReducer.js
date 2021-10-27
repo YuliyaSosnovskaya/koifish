@@ -1,9 +1,10 @@
 
 const calculateTotalPrice = (basket) => {
-  return basket.reduce((acc, item) => {
+  const totalPrice = basket.reduce((acc, item) => {
     const price = item.currentPrice;
     return acc + price;
   }, 0);
+  return totalPrice.toFixed(1);
 }
 
 const initialstate = {

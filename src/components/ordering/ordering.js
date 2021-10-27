@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { connect } from 'react-redux';
 
+import { addOrderToFirebase } from '../../utils'
+
 import { TextInput, DropdawnInpupt, CheckboxInput, RadioButton } from '../inputs/inputs';
 import OrderList from '../orderList/orderList';
 import WithLabel from '../withLabelHOC/withLabelHOC';
@@ -243,7 +245,7 @@ const Ordering = ({basketArr, totalPrice}) => {
       price: totalPrice,
       time: new Date().toGMTString(),
     }
-
+    addOrderToFirebase(order);
     console.log(order);
   }
 
@@ -286,7 +288,7 @@ const Ordering = ({basketArr, totalPrice}) => {
             <UncontactDeliveryBlock checked={isUnContactDelivery} onChange={unContactCheckboxHandler}/>
             <RadioButton title={'Способ оплаты'} checked={payRadioButtonValue} onChange={payRadioButtonHandler} values={['Наличными курьеру','Картой курьеру','Онлайн через ЕРИП']}/>
 
-            <div className={classes.totalPriceTitle}>{`Итого к оплате : ${totalPrice.toFixed(1)} руб`}</div>
+            <div className={classes.totalPriceTitle}>{`Итого к оплате : ${totalPrice} руб`}</div>
           
             <button type='submit' className={classes.orderButton} >Оформить заказ</button>
           </form>

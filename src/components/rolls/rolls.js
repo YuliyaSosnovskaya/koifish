@@ -1,5 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { useEffect , useState} from 'react';
+
+import { getRollFromFirebase } from '../../utils';
 import MenuItem from '../menuItem/menuItem';
 
 // state = items ([])
@@ -12,7 +14,7 @@ const Rolls = () => {
   const { rollId } = useParams();
   const [items, setItems] = useState([]);
   useEffect(() => {
-    const responsePromise = fetch(`https://koifish-21741-default-rtdb.europe-west1.firebasedatabase.app/${rollId}.json`);
+    const responsePromise = getRollFromFirebase(rollId);
     responsePromise
       .then((response) => response.json())
       .then((data) => {
@@ -27,7 +29,6 @@ const Rolls = () => {
         })
         setItems(result);
       });
-
     
   }, [rollId])
   return (
