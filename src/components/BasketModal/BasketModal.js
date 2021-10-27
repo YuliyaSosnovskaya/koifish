@@ -10,7 +10,7 @@ const BasketModal = ({totalPrice, closeBasket}) => {
     let target = event.target;
     let isClickOutside = true;
     while (target) {
-      if (target.id === 'basketModal') {
+      if (target.id === 'basketModal' || target.id === 'basketButton') {
         isClickOutside = false;
         break;
       } else {
@@ -18,17 +18,14 @@ const BasketModal = ({totalPrice, closeBasket}) => {
       }
     }
     if (isClickOutside) {
-      debugger;
       closeBasket();
     }
   }
   
   useEffect(() => {
-    debugger;
     document.addEventListener('click', onClickDocumentHandler, true);
     return () => {
-      debugger;
-      document.removeEventListener('click', onClickDocumentHandler);
+      document.removeEventListener('click', onClickDocumentHandler, true);
     };
   }, []);
 

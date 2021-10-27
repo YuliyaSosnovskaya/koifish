@@ -211,7 +211,13 @@ const Ordering = ({basketArr, totalPrice}) => {
     }));
 
     const validationArr = [nameInputValue.isValid, phoneInputValue.isValid, streetInputValue.isValid, houseInputValue.isValid, flatInputValue.isValid];
-    const isFormValid = !validationArr.includes(false);
+    const isFormInvalid = validationArr.includes(false);
+    if (isFormInvalid) {
+      console.log('not all valid');
+      return;
+    }
+
+
     const orderdeliveryTime = isClosestDelivery ? 'ближайшее': `${dayDropdawnValue} ${hourDropdawnValue}:${minutDropdawnValue}`;
     const orderedItems = basketArr.map((item) => {
       const newItem = {
@@ -222,7 +228,7 @@ const Ordering = ({basketArr, totalPrice}) => {
       return newItem;
     });
 
-    const orderDetails = {
+    const order = {
       name: nameInputValue.value,
       address: {
         street: streetInputValue.value,
@@ -235,8 +241,10 @@ const Ordering = ({basketArr, totalPrice}) => {
       paymentMethod: payRadioButtonValue,
       order: orderedItems,
       price: totalPrice,
+      time: new Date().toGMTString(),
     }
-    isFormValid ?  console.log(orderDetails) : console.log('not all valid');
+
+    console.log(order);
   }
 
   

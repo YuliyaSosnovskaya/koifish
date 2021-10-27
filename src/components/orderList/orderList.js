@@ -3,6 +3,21 @@ import {deleteFromBasket} from '../../store/actions/index';
 
 import classes from './orderList.module.css';
 
+const OrderListItem = ({item, deleteItem}) => {
+  return (
+    <div className={classes.orderItem}>
+      <div>
+        <img className={classes.imgClass} src={item.img} alt="order item"/>
+      </div>
+      <div className={classes.amount}>{item.title}</div>
+      <div className={classes.amount}>{`${item.amount} шт`}</div>
+      <div  className={classes.amount}> {`${item.currentPrice} руб`}</div>
+      <div className={classes.amount}>
+      <img className={classes.iconDelete} onClick={() => deleteItem(item.id)} src='/icons/delete1.png' alt='delete icon'/>
+      </div>
+    </div>
+  );
+};
 
 const OrderList = ({basketArr, deleteItemFromStore}) => {
 
@@ -13,19 +28,7 @@ const OrderList = ({basketArr, deleteItemFromStore}) => {
   return(
     <div className={classes.basketList}>
       { basketArr.map((item) => (
-            
-        <div className={classes.orderItem} key={Math.floor(Math.random() * 100000)}>
-          <div>
-            <img className={classes.imgClass} src={item.img} alt="order item"/>
-          </div>
-          <div className={classes.amount}>{item.title}</div>
-          <div className={classes.amount}>{`${item.amount} шт`}</div>
-          <div  className={classes.amount}> {`${item.currentPrice} руб`}</div>
-          <div className={classes.amount}>
-          <img className={classes.iconDelete} onClick={() => deleteFromBasketHandler(item.id)} src='/icons/delete1.png' alt='delete icon'/>
-          </div>
-
-        </div>
+        <OrderListItem item={item} deleteItem={deleteFromBasketHandler} key={item.key} />
       )) }
     </div>
   )

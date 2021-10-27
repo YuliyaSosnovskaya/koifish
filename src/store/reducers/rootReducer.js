@@ -14,7 +14,12 @@ const initialstate = {
 export default function rootReducer(state=initialstate, action) {
   switch(action.type) {
     case 'ADD' : {
-      const basket = [...state.basket, action.payload.orderItem];
+      const itemKey = Math.floor(Math.random() * 100000);
+      const orderItem = {
+        ...action.payload.orderItem,
+        key: itemKey,
+      };
+      const basket = [...state.basket, orderItem];
       const totalPrice = calculateTotalPrice(basket);
 
       return {
