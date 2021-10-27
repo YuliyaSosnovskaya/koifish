@@ -1,7 +1,6 @@
 import {useEffect} from 'react';
 import { connect } from "react-redux";
 import { NavLink } from 'react-router-dom';
-import {deleteFromBasket} from '../../store/actions/index';
 import classes from './BasketModal.module.css';
 import OrderList from '../orderList/orderList';
 
@@ -36,7 +35,7 @@ const BasketModal = ({totalPrice, closeBasket}) => {
       <OrderList />
       
       <div className={classes.basketDetails}>
-        <span>{`Итого : ${totalPrice.toFixed(1)} руб`}</span>
+        <span>{`Итого : ${totalPrice} руб`}</span>
         <NavLink exact to='/ordering'>
           <button className={classes.orderButton}>Оформить заказ</button>
         </NavLink>
