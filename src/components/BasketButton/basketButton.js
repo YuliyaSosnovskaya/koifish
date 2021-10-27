@@ -19,7 +19,7 @@ const basketButton = ({basketArr, onButtonClick}) => {
   }, 0);
 
   return (
-    <div className={classes.basketComponent} onClick={onButtonClick}>
+    <div className={classes.basketComponent} onClick={onButtonClick} id='basketButton'>
       <BasketIcon/>
       <span>{totalPrice.toFixed(1) + ' руб'}</span>
     </div>

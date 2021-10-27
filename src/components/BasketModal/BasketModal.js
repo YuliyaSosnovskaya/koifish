@@ -2,20 +2,15 @@ import {useEffect} from 'react';
 import { connect } from "react-redux";
 import { NavLink } from 'react-router-dom';
 import {deleteFromBasket} from '../../store/actions/index';
-
 import classes from './BasketModal.module.css';
+import OrderList from '../orderList/orderList';
 
-const BasketModal = ({basketArr, closeBasket, deleteItemFromStore}) => {
-  const totalPrice = basketArr.reduce((acc, item) => {
-    const price = item.currentPrice;
-    return acc + price;
-  }, 0);
-
+const BasketModal = ({totalPrice, closeBasket}) => {
   const onClickDocumentHandler = (event) => {
     let target = event.target;
     let isClickOutside = true;
     while (target) {
-      if (target.id === 'basketModal') {
+      if (target.id === 'basketModal' || target.id === 'basketButton') {
         isClickOutside = false;
         break;
       } else {
@@ -26,40 +21,20 @@ const BasketModal = ({basketArr, closeBasket, deleteItemFromStore}) => {
       closeBasket();
     }
   }
-  const deleteFromBasketHandler = (id) => {
-    deleteItemFromStore(id);
-  }
-
+  
   useEffect(() => {
     document.addEventListener('click', onClickDocumentHandler, true);
     return () => {
-      document.removeEventListener('click', onClickDocumentHandler);
+      document.removeEventListener('click', onClickDocumentHandler, true);
     };
   }, []);
 
   return (
     <div className={classes.basketModal} id='basketModal'>
       <span className={classes.header}>Корзина</span>
-      <div className={classes.basketList}>
-        
-         { basketArr.map((item) => (
-          
-          <div className={classes.orderItem} key={Math.floor(Math.random() * 100000)}>
-            <div>
-              <img className={classes.imgClass} src={item.img} alt="order item"/>
-            </div>
-            <div className={classes.amount}>{item.title}</div>
-            <div className={classes.amount}>{`${item.amount} шт`}</div>
-            <div  className={classes.amount}> {`${item.currentPrice} руб`}</div>
-            <div className={classes.amount}>
-             <img className={classes.iconDelete} onClick={() => deleteFromBasketHandler(item.id)} src='/icons/delete1.png' alt='delete icon'/>
-            </div>
-
-          </div>
-        )) }
-        
+     
+      <OrderList />
       
-      </div>
       <div className={classes.basketDetails}>
         <span>{`Итого : ${totalPrice.toFixed(1)} руб`}</span>
         <NavLink exact to='/ordering'>
@@ -71,13 +46,8 @@ const BasketModal = ({basketArr, closeBasket, deleteItemFromStore}) => {
 }
 function mapStateToProps (state) {
   return {
-    basketArr: state.basket
-  }
-}
-function mapDispatchToProps(dispatch) {
-  return {
-    deleteItemFromStore : (itemId) => dispatch(deleteFromBasket(itemId))
+    totalPrice: state.totalPrice,
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(BasketModal);
+export default connect(mapStateToProps)(BasketModal);

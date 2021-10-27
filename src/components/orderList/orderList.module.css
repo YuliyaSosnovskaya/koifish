@@ -1,0 +1,32 @@
+.basketList {
+  overflow-y: scroll;
+  /* height: 70%; */
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+.orderItem{
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #6d5c5c47;
+  margin-bottom: 10px;
+  padding-right: 10px;
+  line-height: 1.1;
+  color: #384850;
+  font-weight: 500;
+}
+.imgClass {
+  width: 110px;
+}
+.amount{
+  display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.iconDelete:hover {
+  cursor: pointer;
+  filter: contrast(0.4);
+  transform: scale(1.2);
+  transition: 0.2s;
+}
+  

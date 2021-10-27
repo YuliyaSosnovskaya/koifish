@@ -15,10 +15,8 @@ const HeaderMenu = () => {
   }
 
   const closeBasketHandler = () => {
-    debugger;
     setIsBasketShown(false);
   }
-
   return (
     <div className={classes.headerMenu}>
       <div className={classes.container}>
@@ -36,7 +34,7 @@ const HeaderMenu = () => {
             ))
           }          
         </div>
-        <BasketButton onButtonClick={openBasketHandler} />
+        <BasketButton onButtonClick={isBasketShown ? closeBasketHandler : openBasketHandler} />
         { isBasketShown ? <BasketModal closeBasket={closeBasketHandler} /> : null}
       </div>
     </div>

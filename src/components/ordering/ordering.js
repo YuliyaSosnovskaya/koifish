@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { connect } from 'react-redux';
 
 import { TextInput, DropdawnInpupt, CheckboxInput, RadioButton } from '../inputs/inputs';
+import OrderList from '../orderList/orderList';
 import WithLabel from '../withLabelHOC/withLabelHOC';
 import classes from './ordering.module.css';
 
@@ -50,7 +51,7 @@ const UncontactDeliveryBlock = ({ onChange, checked }) => {
 
 //ORDERING COMPONENT
 
-const Ordering = ({basketArr}) => {
+const Ordering = ({basketArr, totalPrice}) => {
   const [nameInputValue, setNameInputValue] = useState({value: '', isValid: false, isTouched: false});
   const [phoneInputValue, setPhoneInputValue] = useState({value: '+375', isValid: false, isTouched: false});
   const [streetInputValue, setStreetInputValue] = useState({value: '', isValid: false, isTouched: false});
@@ -185,11 +186,6 @@ const Ordering = ({basketArr}) => {
 
   const closestDeliveryCheckbox = <CheckboxInput id="delivery" onChange={closestDeliveryHandler} checked={isClosestDelivery}/>
   
-  let totalPrice = basketArr.reduce((acc, item) => {
-    const price = item.currentPrice;
-    return acc + price;
-  }, 0);
-
   const onSubmitHandler = (event) => {
     event.preventDefault();
 
@@ -215,7 +211,13 @@ const Ordering = ({basketArr}) => {
     }));
 
     const validationArr = [nameInputValue.isValid, phoneInputValue.isValid, streetInputValue.isValid, houseInputValue.isValid, flatInputValue.isValid];
-    const isFormValid = !validationArr.includes(false);
+    const isFormInvalid = validationArr.includes(false);
+    if (isFormInvalid) {
+      console.log('not all valid');
+      return;
+    }
+
+
     const orderdeliveryTime = isClosestDelivery ? 'ближайшее': `${dayDropdawnValue} ${hourDropdawnValue}:${minutDropdawnValue}`;
     const orderedItems = basketArr.map((item) => {
       const newItem = {
@@ -226,7 +228,7 @@ const Ordering = ({basketArr}) => {
       return newItem;
     });
 
-    const orderDetails = {
+    const order = {
       name: nameInputValue.value,
       address: {
         street: streetInputValue.value,
@@ -239,8 +241,10 @@ const Ordering = ({basketArr}) => {
       paymentMethod: payRadioButtonValue,
       order: orderedItems,
       price: totalPrice,
+      time: new Date().toGMTString(),
     }
-    isFormValid ?  console.log(orderDetails) : console.log('not all valid');
+
+    console.log(order);
   }
 
   
@@ -289,7 +293,7 @@ const Ordering = ({basketArr}) => {
         </div>
         <div className={classes.rightOrderDetails}> 
             <span>Состав заказа </span>
-            
+            <OrderList />
         </div>
       </div>
      
@@ -298,7 +302,8 @@ const Ordering = ({basketArr}) => {
 
 function mapStateToProps (state) {
   return {
-    basketArr: state.basket
+    basketArr: state.basket,
+    totalPrice: state.totalPrice
   }
 }
 
