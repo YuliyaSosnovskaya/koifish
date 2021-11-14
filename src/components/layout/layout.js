@@ -3,7 +3,7 @@ import HeaderMenu from '../headerMenu/headerMenu';
 
 import classes from './layout.module.css';
 
-const Layout = (props) => {
+const Layout = ({children}) => {
   return (
     <div className={classes.Layout}>
       <Header />
@@ -14,9 +14,13 @@ const Layout = (props) => {
         display: 'flex'
       }}>
         <div className={classes.content}>
-          {props.children}
+          {children}
         </div>
       </div>
+      <footer>
+        <span>Created by Yuliya Sosnovskaya</span>
+        <div>...</div>
+      </footer>
     </div>
   );
 };

@@ -12,14 +12,17 @@
 }
 
 .img0 {
+  width: -webkit-fill-available;
   transform: translateX(0);
 }
 
 .img1 {
+  width: -webkit-fill-available;
   transform: translateX(-100%);
 }
 
 .img2 {
+  width: -webkit-fill-available;
   transform: translateX(-200%);
 }
 

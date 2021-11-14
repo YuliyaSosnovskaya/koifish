@@ -1,5 +1,6 @@
-import {useState} from 'react';
-import {connect} from 'react-redux';
+import { useState } from 'react';
+import { connect } from 'react-redux';
+import { useParams } from 'react-router-dom';
 
 import Card from "../../shared/card/card";
 import { addToBasket } from '../../store/actions';
@@ -13,6 +14,9 @@ const MenuItem = ({title, img, description, price, id, saveItemToStore}) => {
   const [currentPrice, setCurrentPrice] = useState(price);
   const [amount, setAmount] = useState('8');
 
+  const { rollId } = useParams();
+  const isDrinks = rollId === 'drinks';
+  
   const changeDisplay = () => {
    if(isImg) {
     setIsImg(false);
@@ -29,6 +33,10 @@ const MenuItem = ({title, img, description, price, id, saveItemToStore}) => {
   }
 
   const addToBasketHandler = () => {
+    if(isDrinks) {
+      saveItemToStore({id, currentPrice, amount:'1', title, img});
+      return;
+    }
     saveItemToStore({id, currentPrice, amount, title, img});
   }
  
@@ -48,38 +56,40 @@ const MenuItem = ({title, img, description, price, id, saveItemToStore}) => {
             </div>
           </div>
           
-          <div className={[classes.chooseBlock, forChoose].join(' ')}>
-            <p>Выберите количество</p>
-            <div >
-              <label>
-                <input
-                  type="radio"
-                  value="8"
-                  checked={amount === '8'}
-                  onChange={changeAmountHandler}
-                />
-                8
-              </label>
+          {!isDrinks && (
+            <div className={[classes.chooseBlock, forChoose].join(' ')}>
+              <p>Выберите количество</p>
+              <div >
+                <label>
+                  <input
+                    type="radio"
+                    value="8"
+                    checked={amount === '8'}
+                    onChange={changeAmountHandler}
+                  />
+                  8
+                </label>
+              </div>
+              <div>
+                <label>
+                  <input
+                    type="radio"
+                    value="12"
+                    checked={amount === '12'}
+                    onChange={changeAmountHandler}
+                  />
+                  12
+                </label>
+              </div>
             </div>
-            <div>
-              <label>
-                <input
-                  type="radio"
-                  value="12"
-                  checked={amount === '12'}
-                  onChange={changeAmountHandler}
-                />
-                12
-              </label>
-            </div>
-          </div>
+          )}
           
           <div className={classes.padding}>
             <span className={classes.price}>{currentPrice} руб</span>
             <div className={classes.divForButtons} >
-              {!isImg && <div className={classes.back} onClick={changeDisplay}></div>}
-              {isImg && <button className={classes.button} onClick={changeDisplay}>Свойства</button>}
-              {!isImg && <button className={classes.button} onClick={addToBasketHandler}>В корзину</button>}
+              {!isDrinks && !isImg && <div className={classes.back} onClick={changeDisplay}></div>}
+              {!isDrinks && isImg && <button className={classes.button} onClick={changeDisplay}>Свойства</button>}
+              {(isDrinks || !isImg) && <button className={classes.button} onClick={addToBasketHandler}>В корзину</button>}
             </div>
            
           </div>

@@ -1,0 +1,28 @@
+.divForm{
+  display: flex;
+  flex-direction: column;
+  margin:0 auto;
+}
+
+.span{
+  font-size: 13px;
+  color: red;
+  padding-left: 5px;
+}
+.errorMessage {
+  color: red;
+  margin-left: 5px;
+}
+
+.button {
+  border-radius: 12px;
+  height: 34px;
+  border: solid 1px #d6cccd;
+  font-size: 14px;
+  color: #312a2ac9;
+  margin: 15px 0;
+}
+.button:hover{
+  filter: brightness(0.9);
+  cursor: pointer;
+}

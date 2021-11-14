@@ -1,4 +1,3 @@
-
 import CatalogItem from "../catalogItem/catalogItem";
 import { MENU_LINKS } from '../../metadata';
 import Carusel from '../../shared/carusel/carusel';
