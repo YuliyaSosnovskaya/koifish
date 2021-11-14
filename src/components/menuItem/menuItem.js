@@ -29,12 +29,12 @@ const MenuItem = ({title, img, description, price, id, saveItemToStore}) => {
     const amountValue = event.target.value;
     setAmount(amountValue);
     const newPrice = amountValue === '8' ? price : price + ADDITIONAL_COST;
-    setCurrentPrice(newPrice);
+    setCurrentPrice(Number(newPrice.toFixed(1)));
   }
 
   const addToBasketHandler = () => {
     if(isDrinks) {
-      saveItemToStore({id, currentPrice, amount:'1', title, img});
+      saveItemToStore({id, currentPrice, amount: '1', title, img});
       return;
     }
     saveItemToStore({id, currentPrice, amount, title, img});
