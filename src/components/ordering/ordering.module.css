@@ -108,12 +108,35 @@
   font-stretch: condensed;
   color: #f5f3f3;
   margin:  25px 0;
+  letter-spacing: 1.1px;
 }
+
 .orderButton:hover {
   cursor: pointer;
   filter: contrast(1.4);
   color: #fffdfd;
 }
+button:disabled{
+  filter: contrast(0.4);
+}
+button:disabled:hover{
+  cursor:default;
+  filter: contrast(0.4);
+}
+.successfulOrder{
+  color: #077307;
+  font-size: 20px;
+  font-weight: 600;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 10px 5px 15px 5px;
+  border-radius: 33px;
+}
+.check{
+  margin-left: 5px;
+    font-size: 26px;
+}
+
 
 
 

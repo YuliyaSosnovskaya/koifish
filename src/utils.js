@@ -9,7 +9,7 @@ export const addItemsToFirebase = (item, rollId) => {
 };
 
 export const addOrderToFirebase = (order) => {
-  fetch(`https://koifish-21741-default-rtdb.europe-west1.firebasedatabase.app/orders.json`, {
+  return fetch(`https://koifish-21741-default-rtdb.europe-west1.firebasedatabase.app/orders.json`, {
     method: 'POST',
     headers:{
       'Content-Type': 'application/json'
@@ -20,7 +20,6 @@ export const addOrderToFirebase = (order) => {
 
 export const getRollFromFirebase = (rollId) => {
   return fetch(`https://koifish-21741-default-rtdb.europe-west1.firebasedatabase.app/${rollId}.json`);
-  
 }
 
 

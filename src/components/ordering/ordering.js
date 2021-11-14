@@ -72,6 +72,8 @@ const Ordering = ({basketArr, totalPrice}) => {
 
   const [payRadioButtonValue, setPayRadioButtonValue] = useState('Картой курьеру');
 
+  const [successfulOrder, setSuccessfulOrder] = useState(false);
+
   const unContactCheckboxHandler = (event) => {
     const isChecked = event.target.checked;
     
@@ -215,12 +217,11 @@ const Ordering = ({basketArr, totalPrice}) => {
     const validationArr = [nameInputValue.isValid, phoneInputValue.isValid, streetInputValue.isValid, houseInputValue.isValid, flatInputValue.isValid];
     const isFormInvalid = validationArr.includes(false);
     if (isFormInvalid) {
-      console.log('not all valid');
+      window.scrollTo(0, 0);
       return;
     }
 
-
-    const orderdeliveryTime = isClosestDelivery ? 'ближайшее': `${dayDropdawnValue} ${hourDropdawnValue}:${minutDropdawnValue}`;
+    const orderdeliveryTime = isClosestDelivery ? 'ближайшее' : `${dayDropdawnValue} ${hourDropdawnValue}:${minutDropdawnValue}`;
     const orderedItems = basketArr.map((item) => {
       const newItem = {
         amount: item.amount,
@@ -245,68 +246,92 @@ const Ordering = ({basketArr, totalPrice}) => {
       price: totalPrice,
       time: new Date().toGMTString(),
     }
-    addOrderToFirebase(order);
-    console.log(order);
+    const makeOrderPromise = addOrderToFirebase(order);
+    makeOrderPromise
+      .then((response) => response.json())
+      .then(() => {
+        setSuccessfulOrder(true);
+      });
   }
 
-  
+  const isbasketEmpty = basketArr.length === 0;
+
   return (
-      <div className={classes.wrapper}>
-        <div className={classes.leftOrderDetails}>
-          <div className={classes.header}>Оформление заказа</div>
+    <div className={classes.wrapper}>
+      <div className={classes.leftOrderDetails}>
+        <div className={classes.header}>Оформление заказа</div>
 
-          <form onSubmit={onSubmitHandler}>
-            <WithLabel label='Имя' component={nameInput} />
-            <WithLabel label='Телефон' component={phoneNumberInput} />
-            <div className={classes.adresBlock}>
-              <div className={classes.adresssHeader}>Aдрес :</div>
-              <WithLabel label='Улица' component={streetInput} />
-              <div className={classes.adreswrapper}>
-                <WithLabel label='Дом' component={houseInput} />
-                <WithLabel label='Квартира' component={flatInput} />
-              </div>
+        <form onSubmit={onSubmitHandler}>
+          <WithLabel label='Имя' component={nameInput} />
+          <WithLabel label='Телефон' component={phoneNumberInput} />
+          <div className={classes.adresBlock}>
+            <div className={classes.adresssHeader}>Aдрес :</div>
+            <WithLabel label='Улица' component={streetInput} />
+            <div className={classes.adreswrapper}>
+              <WithLabel label='Дом' component={houseInput} />
+              <WithLabel label='Квартира' component={flatInput} />
             </div>
-            <WithLabel label='Комментарий к заказу' component={commentInput}/>
+          </div>
+          <WithLabel label='Комментарий к заказу' component={commentInput}/>
 
-            <div className={classes.deliveryBlock}>
-              { 
-                isClosestDelivery ?  null : (
-                  <> 
-                      <WithLabel label='Час' component={hourDropdawn}/>
-                      <WithLabel label='Минуты' component={minDropdawn}/>
-                      <WithLabel label='Число' component={dayDropdawn} />
-                  </>
-                )
-              }
-              <div className={classes.closestDeliveryCheckbox}> 
-                {closestDeliveryCheckbox}
-                <span>Ближайшее </span>
+          <div className={classes.deliveryBlock}>
+            { 
+              isClosestDelivery ?  null : (
+                <> 
+                    <WithLabel label='Час' component={hourDropdawn}/>
+                    <WithLabel label='Минуты' component={minDropdawn}/>
+                    <WithLabel label='Число' component={dayDropdawn} />
+                </>
+              )
+            }
+            <div className={classes.closestDeliveryCheckbox}> 
+              {closestDeliveryCheckbox}
+              <span>Ближайшее </span>
+            </div>
+      
+          </div>          
+
+          <UncontactDeliveryBlock checked={isUnContactDelivery} onChange={unContactCheckboxHandler}/>
+          <RadioButton
+            title={'Способ оплаты'}
+            checked={payRadioButtonValue}
+            onChange={payRadioButtonHandler}
+            values={['Наличными курьеру','Картой курьеру','Онлайн через ЕРИП']}
+          />
+
+          <div className={classes.totalPriceTitle}>{`Итого к оплате : ${totalPrice} руб`}</div>
+
+          {
+            successfulOrder ? (
+              <div className={classes.successfulOrder}>
+                Ваш заказ принят в обработку <span className={classes.check}> &#10003;</span>
               </div>
-        
-            </div>          
+            ) : (
+              <button
+                type='submit'
+                disabled={isbasketEmpty}
+                className={classes.orderButton}
+              >
+                Оформить заказ
+              </button>
+            )
+          }
 
-            <UncontactDeliveryBlock checked={isUnContactDelivery} onChange={unContactCheckboxHandler}/>
-            <RadioButton title={'Способ оплаты'} checked={payRadioButtonValue} onChange={payRadioButtonHandler} values={['Наличными курьеру','Картой курьеру','Онлайн через ЕРИП']}/>
-
-            <div className={classes.totalPriceTitle}>{`Итого к оплате : ${totalPrice} руб`}</div>
-          
-            <button type='submit' className={classes.orderButton} >Оформить заказ</button>
-          </form>
-        </div>
-        <div className={classes.rightOrderDetails}> 
-            <span>Состав заказа </span>
-            <OrderList />
-        </div>
+        </form>
       </div>
-     
-  )
+      <div className={classes.rightOrderDetails}> 
+        <span>Состав заказа </span>
+        <OrderList />
+      </div>
+    </div>
+  );
 }
 
 function mapStateToProps (state) {
   return {
     basketArr: state.basket,
     totalPrice: state.totalPrice
-  }
+  };
 }
 
-export default connect(mapStateToProps, null)( Ordering);
+export default connect(mapStateToProps, null)(Ordering);

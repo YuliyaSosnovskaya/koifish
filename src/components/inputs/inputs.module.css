@@ -11,7 +11,7 @@
   text-indent: 5px;
 }
 .notValid{
-  border-bottom: 1px solid #fb4f58;
+  border-bottom: 2px solid #f50612;
 }
 .valid{
   border-bottom: 1px solid #1cc763a6;

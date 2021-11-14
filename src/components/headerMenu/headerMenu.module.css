@@ -41,7 +41,8 @@
   line-height: 1.5;
   font-size: 16px;
   margin-right: 40px;
-  color: #292f32;
+  color: #455a64;
+  font-weight: 600;
   text-decoration: none;
   border-bottom: 1px solid gray;
   transition: 0.4s;
@@ -57,19 +58,19 @@
   border-bottom: none !important;
 }
 
-@media(min-width: 768px) and (max-width: 992px) {
+@media(min-width: 840px) and (max-width: 992px) {
   .container {
     font-size: 14px;
   }
 }
-@media(min-width: 580px) and (max-width: 768px) {
+@media(min-width: 650px) and (max-width: 840px) {
   .linksContainer a {
     margin-right: 15px;
     font-size: 14px;
   }
  
 }
-@media(min-width: 375px) and (max-width: 580px) {
+@media(min-width: 375px) and (max-width: 650px) {
   .linksContainer {
     flex-wrap: wrap;
     justify-content: normal;

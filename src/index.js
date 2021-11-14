@@ -4,6 +4,8 @@ import {BrowserRouter} from 'react-router-dom';
 import {createStore} from 'redux';
 import {Provider} from 'react-redux';
 
+import { AuthProvider } from './context/AuthContext';
+
 import rootReducer from './store/reducers/rootReducer';
 import App from './App';
 import './index.css';
@@ -11,12 +13,14 @@ import './index.css';
 const store = createStore(rootReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
 const app = (
-  <Provider store={store}>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  </Provider>
-)
+  <AuthProvider>
+    <Provider store={store}>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </Provider>
+  </AuthProvider>
+);
 
 ReactDOM.render(
  app, document.getElementById('root')

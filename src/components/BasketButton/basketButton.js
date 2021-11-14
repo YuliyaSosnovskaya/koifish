@@ -1,7 +1,6 @@
 import {connect} from 'react-redux';
 
 import BasketIcon from '../../img/basketIcon';
-
 import classes from './basketButton.module.css';
 
 const basketButton = ({basketArr, onButtonClick}) => {
@@ -29,7 +28,7 @@ const basketButton = ({basketArr, onButtonClick}) => {
 function mapStateToProps (state) {
   return {
     basketArr: state.basket
-  }
+  };
 }
 
 export default connect(mapStateToProps, null)(basketButton);

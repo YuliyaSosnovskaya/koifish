@@ -9,8 +9,6 @@ const CAROUSEL_IMAGE_PATHS = [
   '/carusel-images/carusel2.jpg'
 ];
 
-// let currentIndex = 0;
-
 const imgClass = classes.img;
 
 const Carusel = () => {
@@ -62,12 +60,9 @@ const Carusel = () => {
         >
           <img alt="right arrow" src="right-arrow.svg" />
         </button>
-
       </div>
-      
     </>
-    
-
-  )
+  );
 }
+
 export default Carusel;

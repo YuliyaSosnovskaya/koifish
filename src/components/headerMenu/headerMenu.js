@@ -17,6 +17,7 @@ const HeaderMenu = () => {
   const closeBasketHandler = () => {
     setIsBasketShown(false);
   }
+
   return (
     <div className={classes.headerMenu}>
       <div className={classes.container}>
